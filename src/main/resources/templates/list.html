@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ortolano</title>
+</head>
+
+<body>
+
+    <div class="starter-template">
+    	<h1>Webapp Ortolano</h1>
+    	<h2>List of vegetables</h2>
+    	<table border="2">
+			<thead>
+				<tr>
+					<th> Id </th>
+					<th> Name </th>
+					<th> Description </th>
+					<th> Sun </th>
+					<th> Water </th>
+					<th> Sowing </th>
+					<th> Harvest </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="vegetable : ${vegetables}">
+    				<td name="id"><a th:href="@{'/ortolano/' + ${vegetable.id} + '/update'}" th:text="${vegetable.id}"></a></td>
+    				<td name="name" th:text="${vegetable.name}"></td>
+					<td name="description" th:text="${vegetable.description}"></td>
+					<td name="sun" th:text="${vegetable.sun}"></td>
+					<td name="water" th:text="${vegetable.water}"></td>
+					<td>
+						<ul name="sowing" th:each="i : ${vegetable.sowing}">
+							<li th:text="${i}">
+						</ul>
+					</td>
+					<td>
+						<ul name="harvest" th:each="j : ${vegetable.harvest}">
+							<li th:text="${j}">
+						</ul>
+					</td>				
+					<td><a th:href="@{'/ortolano/' + ${vegetable.id} + '/delete'}"><input type="button" value="Delete" /></a></td>
+    			</tr>
+  		</tbody>
+		</table>
+		<br>
+		<a href="/ortolano/insert"><input type="button" value="Add vegetable" /></a>
+    </div>
+</body>
+</html>

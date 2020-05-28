@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ortolano</title>
+</head>
+
+<body>
+
+    <div class="starter-template">
+        <h1>Webapp Ortolano</h1>
+        <a href="/ortolano/default">Home</a><br>
+        <br>
+        <form action="/ortolano/save" method="post">
+            <div>
+            	<input name="id" type="hidden" th:value="${vegetable.id}" />           	
+            	<input type="hidden" name="mode" th:value="${mode}"></p>
+            	<table border="2">
+                <tr>
+					<th> Name of vegetable: </th>
+					<td><input type="text" name="name" th:value="${vegetable.name}" /></td>
+                </tr>
+                <tr>
+					<th> Description of vegetable: </th>
+					<td><input type="text" name="description" th:value="${vegetable.description}" /></td>
+                </tr>
+                </table>
+                <table border="2">
+                <tr>
+                	<th>Sun:</th>
+                	<td><select name="sun">
+                		<option th:each="i : ${#numbers.sequence(1,3)}" th:value="${i}" th:text="${i}" th:selected="${i==vegetable.sun}"></option>                		
+                	</select></td>
+                </tr>
+                <tr>
+					<th>Water:</th>
+					<td><select name="water">
+                		<option th:each="i : ${#numbers.sequence(1,3)}" th:value="${i}" th:text="${i}" th:selected="${i==vegetable.water}"></option>
+        	       	</select></td>
+                </tr>
+                </table>
+                <table border="2">
+				<tr>
+					<th>Sowing:</th>
+					<td>
+					<input type="checkbox" name="sowing" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese} + '<br>'" th:checked="${#lists.contains(vegetable.sowing, mese)}" />
+					</td>
+					<th>Harvest:</th>    
+                	<td>
+                	<input type="checkbox" name="harvest" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese} + '<br>'" th:checked="${#lists.contains(vegetable.harvest, mese)}" />
+                	</td>
+                </tr>
+                </table>
+                <br>
+            	<input type="submit" value="Invia" />
+			</div>
+        </form>
+    </div>
+
+</body>
+</html>
