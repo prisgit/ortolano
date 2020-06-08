@@ -13,13 +13,11 @@
         <a href="/ortolano/default">Home</a><br>
         <br>
         <form action="/ortolano/save" method="post">
-            <div>
-            	<input name="id" type="hidden" th:value="${vegetable.id}" />           	
-            	<input type="hidden" name="mode" th:value="${mode}"></p>
+            <div>          	
             	<table border="2">
                 <tr>
 					<th> Name of vegetable: </th>
-					<td><input type="text" name="name" th:value="${vegetable.name}" /></td>
+					<td><input type="text" name="name" th:value="${vegetable.getName()}" /></td>
                 </tr>
                 <tr>
 					<th> Description of vegetable: </th>
@@ -44,11 +42,11 @@
 				<tr>
 					<th>Sowing:</th>
 					<td>
-					<input type="checkbox" name="sowing" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese} + '<br>'" th:checked="${#lists.contains(vegetable.sowing, mese)}" />
+						<input type="checkbox" name="sowing" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese.nomeMese} + '<br>'" />
 					</td>
 					<th>Harvest:</th>    
                 	<td>
-                	<input type="checkbox" name="harvest" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese} + '<br>'" th:checked="${#lists.contains(vegetable.harvest, mese)}" />
+						<input type="checkbox" name="harvest" th:each="mese : ${mesi}" th:value="${mese}" th:utext="${mese.nomeMese} + '<br>'" />
                 	</td>
                 </tr>
                 </table>

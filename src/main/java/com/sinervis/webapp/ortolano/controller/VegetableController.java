@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sinervis.webapp.ortolano.Vegetable;
+import com.sinervis.webapp.ortolano.repository.MeseRepositoryInterface;
 import com.sinervis.webapp.ortolano.repository.VegetableRepositoryInterface;
 
 @Controller
 @RequestMapping(value="/ortolano")
-public class VegetablesController {
+public class VegetableController {
 	
 	@Autowired
-	//dice a Spring che dentro questa var ci metti un'istanza che implementa l'interfaccia
 	private VegetableRepositoryInterface vegetableRepository;
+	
+	@Autowired
+	private MeseRepositoryInterface meseRepository;
 	
 	@GetMapping(value="/default")
 	public String home() {
@@ -40,6 +43,7 @@ public class VegetablesController {
 	public String insert(Model model) {
 		Vegetable vegNull = new Vegetable();
 		model.addAttribute("vegetable", vegNull);
+		model.addAttribute("mesi", meseRepository.findAll());
 		return "insert_update";
 	}
 		

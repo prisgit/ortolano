@@ -1,5 +1,6 @@
 package com.sinervis.webapp.ortolano;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ public class Vegetable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
-	private int idVeg;
+	private int id;
 	
 	private String name;
 	
@@ -25,20 +26,20 @@ public class Vegetable {
 	@JoinTable(
 			name="SOWING",
 			joinColumns=@JoinColumn(name="VEGETABLES", referencedColumnName="ID"),
-			inverseJoinColumns=@JoinColumn(name="MESE", referencedColumnName="ID_MESE"))
+			inverseJoinColumns=@JoinColumn(name="MESE", referencedColumnName="IDMESE"))
 	private List<Mese> sowing;
 	
 	@ManyToMany
 	@JoinTable(
 			name="HARVEST",
 			joinColumns=@JoinColumn(name="VEGETABLES", referencedColumnName="ID"),
-			inverseJoinColumns=@JoinColumn(name="MESE", referencedColumnName="ID_MESE"))
+			inverseJoinColumns=@JoinColumn(name="MESE", referencedColumnName="IDMESE"))
 	private List<Mese> harvest;
 	
 	private int sun;
 	
 	private int water;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -63,11 +64,11 @@ public class Vegetable {
 	public void setWater(int water) {
 		this.water = water;
 	}
-	public int getIdVeg() {
-		return idVeg;
+	public int getId() {
+		return id;
 	}
 	public void setIdVeg(int idVeg) {
-		this.idVeg = idVeg;
+		this.id = idVeg;
 	}
 	public List<Mese> getSowing() {
 		return sowing;
