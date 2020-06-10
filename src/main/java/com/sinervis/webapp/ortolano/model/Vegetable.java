@@ -1,4 +1,4 @@
-package com.sinervis.webapp.ortolano;
+package com.sinervis.webapp.ortolano.model;
 
 import java.util.ArrayList;
 import java.util.List;

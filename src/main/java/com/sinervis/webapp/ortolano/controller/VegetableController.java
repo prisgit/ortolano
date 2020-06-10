@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sinervis.webapp.ortolano.Vegetable;
+import com.sinervis.webapp.ortolano.model.Vegetable;
 import com.sinervis.webapp.ortolano.repository.MeseRepositoryInterface;
 import com.sinervis.webapp.ortolano.repository.VegetableRepositoryInterface;
 

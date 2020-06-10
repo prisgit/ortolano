@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sinervis.webapp.ortolano.Mese;
+import com.sinervis.webapp.ortolano.model.Mese;
 import com.sinervis.webapp.ortolano.repository.MeseRepositoryInterface;
 
 @Component
