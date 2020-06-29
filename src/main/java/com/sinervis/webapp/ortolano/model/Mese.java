@@ -23,6 +23,7 @@ public class Mese {
 		return idMese;
 	}
 
+	
 	public void setIdMese(int idMese) {
 		this.idMese = idMese;
 	}
