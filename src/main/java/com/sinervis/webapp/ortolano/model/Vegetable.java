@@ -17,10 +17,10 @@ public class Vegetable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private int id;
+	
 	private String name;
+	
 	private String description;
-	private int sun;	
-	private int water;
 	
 	@ManyToMany
 	@JoinTable(
@@ -36,18 +36,23 @@ public class Vegetable {
 			inverseJoinColumns=@JoinColumn(name="MESE", referencedColumnName="IDMESE"))
 	private List<Mese> harvest;
 	
-	public int getId() {
-		return id;
+	private int sun;
+	
+	private int water;
+	
+	public Vegetable() {
+		this.id = 0;
+		this.name = "";
+		this.description = "";
+		this.sun = 0;
+		this.water = 0;
+		this.sowing = new ArrayList<Mese>();
+		this.harvest = new ArrayList<Mese>();
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getName() {
 		return name;
 	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -69,6 +74,12 @@ public class Vegetable {
 	public void setWater(int water) {
 		this.water = water;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public List<Mese> getSowing() {
 		return sowing;
 	}
@@ -81,4 +92,5 @@ public class Vegetable {
 	public void setHarvest(List<Mese> harvest) {
 		this.harvest = harvest;
 	}
+	
 }

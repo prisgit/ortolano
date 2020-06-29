@@ -19,10 +19,6 @@ public class Mese {
 	@Column(unique=true)
 	private String nomeMese;
 
-	public int getIdMese() {
-		return idMese;
-	}
-
 	public int getIdMese(String nomeMese) {
 		int idMese = 0;
 		switch (nomeMese) {
@@ -78,6 +74,10 @@ public class Mese {
 		return idMese;
 	}
 	
+	public int getIdMese() {
+		return idMese;
+	}
+
 	public void setIdMese(int idMese) {
 		this.idMese = idMese;
 	}
