@@ -1,3 +1,11 @@
+		</table>
+		<br>
+		<a href="/ortolano/insert"><input type="button" value="Add vegetable" /></a>
+    </div>
+</body>
+</html>
+
+
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,9 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ortolano</title>
 </head>
-
 <body>
-
     <div class="starter-template">
     	<h1>Webapp Ortolano</h1>
     	<h2>List of vegetables</h2>
@@ -22,8 +28,11 @@
 					<th> Sowing </th>
 					<th> Harvest </th>
 				</tr>
-			</thead>
+			</thead>	
 			<tbody>
+				<tr th:if="${vegetables.empty}">
+					<td colspan="5"> Nessun ortaggio presente </td>
+				</tr>
 				<tr th:each="vegetable : ${vegetables}">
     				<td name="id"><a th:href="@{'/ortolano/' + ${vegetable.id} + '/update'}" th:text="${vegetable.id}"></a></td>
     				<td name="name" th:text="${vegetable.name}"></td>
@@ -32,14 +41,14 @@
 					<td name="water" th:text="${vegetable.water}"></td>
 					<td>
 						<ul name="sowing" th:each="i : ${vegetable.sowing}">
-							<li th:text="${i}">
+							<li th:text="${i.nomeMese}">
 						</ul>
 					</td>
 					<td>
 						<ul name="harvest" th:each="j : ${vegetable.harvest}">
-							<li th:text="${j}">
+							<li th:text="${j.nomeMese}">
 						</ul>
-					</td>				
+					</td>
 					<td><a th:href="@{'/ortolano/' + ${vegetable.id} + '/delete'}"><input type="button" value="Delete" /></a></td>
     			</tr>
   		</tbody>
