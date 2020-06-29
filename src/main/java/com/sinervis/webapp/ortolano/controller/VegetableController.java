@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sinervis.webapp.ortolano.model.Mese;
@@ -94,12 +93,17 @@ public class VegetableController {
 
 	@GetMapping(value="/{id}/update")
 	public String edit(@PathVariable int id, Model model) {
-		model.addAttribute("vegetable", vegetableRepository.getOne(id));
+		Vegetable veg = new Vegetable();
+		List<Mese> mesi = new ArrayList<>();
+		veg = vegetableRepository.getOne(id);
+		mesi = meseRepository.findAll();
+		model.addAttribute("vegetable", veg);
+		model.addAttribute("mesi", mesi);
 		return "insert_update";
 	}
 	
 	@GetMapping(value="/delete")
-	public String delete(@ModelAttribute Vegetable veg, Model model) {
+	public String delete(@ModelAttribute Vegetable veg) {
 		vegetableRepository.delete(veg);	
 		return "redirect:/ortolano/list";
 	}
