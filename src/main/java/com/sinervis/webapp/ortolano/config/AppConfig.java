@@ -14,7 +14,7 @@ import com.sinervis.webapp.ortolano.repository.MeseRepositoryInterface;
 
 @Component
 public class AppConfig {
-	public List<String> mesi = new ArrayList<String>(Arrays.asList("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"));
+	public List<String> mesiEnum = new ArrayList<String>(Arrays.asList("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"));
 	
 	@Autowired
 	MeseRepositoryInterface meseRepository;
@@ -24,7 +24,7 @@ public class AppConfig {
 		//serve per rendere persistente il contenuto della tabella mesi
 		//dopo la prima inizializzazione, la tabella non va ricaricata, quindi occorre aggiungere un controllo: findAll()
 		//se è vuoto, la tabella non è mai stata inizializzata
-		for (String nomeMese:mesi) {
+		for (String nomeMese:mesiEnum) {
 			Mese mese = new Mese();
 			mese.setNomeMese(nomeMese);
 			meseRepository.save(mese);
