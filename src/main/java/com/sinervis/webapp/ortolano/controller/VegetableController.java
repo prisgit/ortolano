@@ -104,10 +104,11 @@ public class VegetableController {
 		return "insert_update";
 	}
 	
-	@GetMapping(value="/delete")
-	public String delete(@ModelAttribute Vegetable veg) {
+	@GetMapping(value="/{id}/delete")
+	public String deleteWithRequest(@PathVariable int id) {
+		Vegetable veg = new Vegetable();
+		veg = vegetableRepository.getOne(id);
 		vegetableRepository.delete(veg);	
 		return "redirect:/ortolano/list";
 	}
-	
 }

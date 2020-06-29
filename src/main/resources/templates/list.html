@@ -41,7 +41,7 @@
 							<li th:text="${j.nomeMese}">
 						</ul>
 					</td>
-					<td><a th:href="@{'/ortolano/delete'}"><input type="button" value="Delete" /></a></td>
+					<td><a th:href="@{'/ortolano/' + ${vegetable.id} + '/delete'}"><input type="button" value="Delete" /></a></td>
     			</tr>
   		</tbody>
 		</table>
