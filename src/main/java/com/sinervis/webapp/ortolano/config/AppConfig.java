@@ -23,11 +23,13 @@ public class AppConfig {
 	public void init(){
 		//serve per rendere persistente il contenuto della tabella mesi
 		//dopo la prima inizializzazione, la tabella non va ricaricata, quindi occorre aggiungere un controllo: findAll()
-		//se è vuoto, la tabella non è mai stata inizializzata
-		for (String nomeMese:mesiEnum) {
+		//se è vuoto, la tabella non è mai stata inizializzata	
+		for (int i=0; i<=11; i++) {
 			Mese mese = new Mese();
-			mese.setNomeMese(nomeMese);
+			mese.setIdMese(i+1);
+			mese.setNomeMese(mesiEnum.get(i));
 			meseRepository.save(mese);
 		}
 	}
+	
 }
