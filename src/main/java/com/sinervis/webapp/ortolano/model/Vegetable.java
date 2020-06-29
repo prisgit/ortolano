@@ -49,7 +49,14 @@ public class Vegetable {
 		this.sowing = new ArrayList<Mese>();
 		this.harvest = new ArrayList<Mese>();
 	}
-
+	
+	//Getters & Setters
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -73,12 +80,6 @@ public class Vegetable {
 	}
 	public void setWater(int water) {
 		this.water = water;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public List<Mese> getSowing() {
 		return sowing;

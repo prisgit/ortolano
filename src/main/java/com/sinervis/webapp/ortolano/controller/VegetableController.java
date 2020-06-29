@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sinervis.webapp.ortolano.model.Mese;
@@ -54,6 +55,7 @@ public class VegetableController {
 		return "insert_update";
 	}
 	
+	@PostMapping(value="/save")
 	public String saveWithRequest(HttpServletRequest req) {
 		String[] mesiSowing = req.getParameterValues("sowing");//mesiSowing: lista di stringhe con i nomi dei mesi di quell'ortaggio
         String[] mesiHarvest = req.getParameterValues("harvest");
