@@ -110,4 +110,9 @@ public class VegetableController {
 		vegetableRepository.delete(veg);	
 		return "redirect:/ortolano/list";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 }

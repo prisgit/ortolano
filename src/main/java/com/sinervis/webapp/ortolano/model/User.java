@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.management.relation.Role;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,14 +13,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
 public class User implements UserDetails{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	
 	private long id;
 	
-	private String userName;
+	private String username;
 	private String password;	
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
@@ -65,8 +73,9 @@ public class User implements UserDetails{
 	}
 	
 	@Override
-	public boolean isCredentialNonExpired() {
-		return true;
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
